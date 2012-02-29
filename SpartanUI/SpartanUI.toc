@@ -1,14 +1,14 @@
 ## Interface: 40300
-## Title: SpartanUI (2.6.2) Development
+## Title: SpartanUI (2.6.3-Beta)
 ## Notes: User Interface combining elegant artwork with well designed features.
-## Version: 2.6.2.30300
-## Author: Atriace, Beladona
+## Version: 2.6.3.40300 Beta
+## Author: Atriace, Beladona, Vaebris
+## Author: Vaebris (Orginal Authors and maintainers: Atriace, Beladona, Zilver, Baine)
 ## X-Category: User Interfaces
-## X-Email: code@spartanui.com
-## X-Website: http://www.spartanui.com
+## X-Email: info@spartanui.net
+## X-Website: http://www.spartanui.net
 ## OptionalDeps: LibStub, Ace3, Bartender4, FuBar, Titan
 ## SavedVariablesPerCharacter: suiChar
 
 scripts\Embed-Libraries.xml
 scripts\Global-Framework.xml
-

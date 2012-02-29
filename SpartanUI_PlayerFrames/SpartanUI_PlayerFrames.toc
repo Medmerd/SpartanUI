@@ -1,11 +1,11 @@
 ## Interface: 40300
 ## Title: SpartanUI: |CFF0070DDPlayer Frames|r
 ## Notes: Player and Target Frames designed to complement SpartanUI
-## Version: 2.6.3 RC5.4
-## Author: Atriace, Beladona, Zilver
+## Version: 2.6.3.40300 Beta
+## Author: Vaebris (Orginal Authors and maintainers: Atriace, Beladona, Zilver, Baine)
 ## X-Category: User Interfaces
-## X-Email: code@spartanui.com
-## X-Website: http://www.spartanui.com
+## X-Email: info@spartanui.net
+## X-Website: http://www.spartanui.net
 ## RequiredDeps: SpartanUI, oUF
 
 scripts\Global-Framework.xml
