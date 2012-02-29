@@ -2,7 +2,6 @@
 ## Title: SpartanUI (2.6.3-Beta)
 ## Notes: User Interface combining elegant artwork with well designed features.
 ## Version: 2.6.3.40300 Beta
-## Author: Atriace, Beladona, Vaebris
 ## Author: Vaebris (Orginal Authors and maintainers: Atriace, Beladona, Zilver, Baine)
 ## X-Category: User Interfaces
 ## X-Email: info@spartanui.net
