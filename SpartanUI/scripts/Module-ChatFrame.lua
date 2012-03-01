@@ -1,4 +1,4 @@
-  local a = CreateFrame("Frame")
+local a = CreateFrame("Frame")
 
   a:SetScript("OnEvent", function(self, event)
     if(event=="PLAYER_LOGIN") then
@@ -18,6 +18,54 @@ local module = addon:NewModule("ChatFrame");
 ---------------------------------------------------------------------------
 
 function module:OnEnable()
+	addon.options.args["chatbuttons"] = {
+		type	=	"input",
+		name 	=	"Toggle ChatFrame Buttons",
+		desc	=	"Enables or disables the chat frame buttons to the right of the chat frame",
+		set		=	function (info, val)
+						if (val == "enable") then
+							suiChar.chatButtons = "enable";
+
+							local friendsMicroButton = _G['FriendsMicroButton'];
+							local chatFrameMenuButton = _G['ChatFrameMenuButton'];
+
+							if (friendsMicroButton) then
+								friendsMicroButton:Show();
+							end
+						
+							if (chatFrameMenuButton) then
+								chatFrameMenuButton:Show();
+							end
+
+							for i = 1, NUM_CHAT_WINDOWS do
+								local chatFrameButton = _G['ChatFrame'..i..'ButtonFrame']
+								if (chatFrameButton) then 
+									chatFrameButton:Show() 
+								end -- if chatFrameButton 
+							end -- for i = 1, NUM_CHAT_WINDOWS
+
+						elseif (val == "disable") then
+							suiChar.chatButtons = "disable";
+							local friendsMicroButton = _G['FriendsMicroButton'];
+							local chatFrameMenuButton = _G['ChatFrameMenuButton'];
+
+							if (friendsMicroButton) then
+								friendsMicroButton:Hide();
+							end
+
+							if (chatFrameMenuButton) then
+								chatFrameMenuButton:Hide();
+							end
+
+							for i = 1, NUM_CHAT_WINDOWS do
+								local chatFrameButton = _G['ChatFrame'..i..'ButtonFrame']
+								if (chatFrameButton) then 
+									chatFrameButton:Hide() 
+								end -- if chatFrameButton
+							end -- for i = 1, NUM_CHAT_WINDOWS
+						end -- if (val == "enable")
+					end, -- function (info, val)
+	};
 
 
 	local origSetItemRef = SetItemRef
@@ -95,11 +143,6 @@ function module:OnEnable()
 	end
 
 	for i = 1, NUM_CHAT_WINDOWS do
-		local bf = _G['ChatFrame'..i..'ButtonFrame']
-			if bf then 
-				bf:Hide() 
-				bf:HookScript("OnShow", function(s) s:Hide(); end)
-			end
 		local ebtl = _G['ChatFrame'..i..'EditBoxLeft']
 		if ebtl then ebtl:Hide() end
 		local ebtm = _G['ChatFrame'..i..'EditBoxMid']
@@ -139,19 +182,46 @@ function module:OnEnable()
 		end
 	end
 
+	if (suiChar.chatButtons == "enable") then
+		local friendsMicroButton = _G['FriendsMicroButton'];
+		local chatFrameMenyButton = _G['ChatFrameMenuButton'];
+		
+		if (friendsdMicroButton) then
+			friendsMicroButton:Show();
+		end
 
-	local mb = _G['ChatFrameMenuButton']
-	if mb then 
-		mb:Hide() 
-		mb:HookScript("OnShow", function(mb) mb:Hide(); end)
-	end
+		if (chatFrameMenuButton) then
+			chatFrameMenuButton:Show();
+		end
 
-	local fmb = _G['FriendsMicroButton']
---	if fmb then 
-		fmb:Hide()
-		fmb:HookScript("OnShow", function(fmb) fmb:Hide(); end)
---	end
+		for i = 1, NUM_CHAT_WINDOWS do
+			local chatFrameButton = _G['ChatFrame'..i..'ButtonFrame']
+			if (chatFrameButton) then 
+				chatFrameButton:Show() 
+			end -- if chatFrameButton 
+		end -- for i = 1, NUM_CHAT_WINDOWS
 
+	elseif (suiChar.chatButtons == "disable") then
+		local friendsMicroButton = _G['FriendsMicroButton'];
+		local chatFrameMenuButton = _G['ChatFrameMenuButton'];
+
+		if (friendsMicroButton) then
+			friendsMicroButton:Hide();
+		end
+
+		if (chatFrameMenuButton) then
+			chatFrameMenuButton:Hide();
+		end
+
+		for i = 1, NUM_CHAT_WINDOWS do
+			local chatFrameButton = _G['ChatFrame'..i..'ButtonFrame']
+			if (chatFrameButton) then 
+				chatFrameButton:Hide() 
+			end -- if chatFrameButton
+		end -- for i = 1, NUM_CHAT_WINDOWS
+	end -- if (suiChar.chatBUttons == "enable")
+
+	
 	ChatFontNormal:SetFont(NAMEPLATE_FONT, 12, "THINOUTLINE") 
 	ChatFontNormal:SetShadowOffset(1,-1)
 	ChatFontNormal:SetShadowColor(0,0,0,0.6)
