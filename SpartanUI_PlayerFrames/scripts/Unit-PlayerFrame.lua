@@ -26,8 +26,10 @@ do -- relocate the druid EclipseBar
 		end
 	end);
 	EclipseBarFrame:SetParent(addon.player); EclipseBar_OnLoad(EclipseBarFrame); EclipseBarFrame:SetFrameStrata("MEDIUM");
-	EclipseBarFrame:SetFrameLevel(4); EclipseBarFrame:SetScale(1); EclipseBarFrame:ClearAllPoints();
-	EclipseBarFrame:SetPoint("TOPRIGHT",addon.player,"BOTTOMLEFT",80,4);
+	EclipseBarFrame:SetFrameLevel(4);
+        EclipseBarFrame:SetScale(0.7); 
+        EclipseBarFrame:ClearAllPoints();
+        EclipseBarFrame:SetPoint("TOPLEFT",addon.player,"TOPLEFT",85,-22);
 end
 
 do -- relocate the AlternatePowerBar
