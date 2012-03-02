@@ -105,6 +105,7 @@ function module:OnEnable()
 	createMinimapCoords();
 	LFGSearchStatus:ClearAllPoints();
 	LFGSearchStatus:SetPoint("BOTTOM",SpartanUI,"TOP",0,100);
-	ConsolidatedBuffs:ClearAllPoints();
-	ConsolidatedBuffs:SetPoint("TOPRIGHT",-13,-13);
+
+	BuffFrame:ClearAllPoints();
+	BuffFrame:SetPoint("TOPRIGHT", -13, -13);
 end
