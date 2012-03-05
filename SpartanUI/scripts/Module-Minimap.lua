@@ -28,7 +28,7 @@ local modifyMinimapLayout = function()
 	Minimap:SetParent(frame); Minimap:SetWidth(158); Minimap:SetHeight(158);
 	Minimap:ClearAllPoints(); Minimap:SetPoint("CENTER");
 	
-	MinimapBackdrop:ClearAllPoints(); MinimapBackdrop:SetPoint("CENTER",frame,"CENTER",-10,-24);
+	MinimapBackdrop:ClearAllPoints(); MinimapBackdrop:SetPoint("CENTER",frame,"CENTER",-20,-19);
 	MinimapZoneTextButton:SetParent(frame); MinimapZoneTextButton:ClearAllPoints(); MinimapZoneTextButton:SetPoint("TOP",frame,"BOTTOM",0,-6);
 	MinimapBorderTop:Hide(); MinimapBorder:SetAlpha(0);
 	MinimapZoomIn:Hide(); MinimapZoomOut:Hide();
