@@ -2,9 +2,9 @@
 ..\..\FrameXML\UI.xsd">
 	<!-- frameStrata Parameters:  BACKGROUND, LOW, MEDIUM, HIGH, DIALOG, FULLSCREEN, FULLSCREEN_DIALOG, TOOLTIP  -->
 	<!-- Layer level Parameters:  BACKGROUND, BORDER, ARTWORK, OVERLAY, HIGHLIGHT -->
-	
 	<Script file="Global-Features.lua" />
 	
+	<!-- SUI_Font's -->
 	<Font name="SUI_FontOutline22"  font="Interface\AddOns\SpartanUI\media\font-cognosis.ttf" outline="NORMAL" virtual="true">
 		<FontHeight><AbsValue val="22"/></FontHeight>
 	</Font>
@@ -30,12 +30,15 @@
 		<FontHeight><AbsValue val="8"/></FontHeight>
 	</Font>
 	
+	<!-- SUI_AncherFrame -->
 	<Frame name="SUI_AnchorFrame" frameStrata="BACKGROUND" parent="UIParent">
 		<Anchors>
 			<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="-1"/></Offset></Anchor>
 			<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT"><Offset><AbsDimension x="0" y="-1"/></Offset></Anchor>
 		</Anchors>
-	</Frame>	
+	</Frame>
+	
+	<!-- SpartanUI -->
 	<Frame name="SpartanUI" frameStrata="BACKGROUND" parent="UIParent">
 		<Anchors>
 			<Anchor point="BOTTOMLEFT" relativeTo="SUI_AnchorFrame" relativePoint="TOPLEFT" />
@@ -45,7 +48,7 @@
 		</Anchors>
 		<Layers>
 			<Layer level="BACKGROUND">
-				<Texture name="$parent_Base1" file="Interface\AddOns\SpartanUI\media\base-center">					
+				<Texture name="$parent_Base1" file="Interface\AddOns\SpartanUI\media\base-center">
 					<Anchors><Anchor point="BOTTOM" relativePoint="BOTTOM"/></Anchors>
 				</Texture>
 				<Texture name="$parent_Base2" file="Interface\AddOns\SpartanUI\media\base-left1">
@@ -63,6 +66,8 @@
 			</Layer>
 		</Layers>
 	</Frame>
+	
+	<!-- SUI_StatusBars_TooltipTemplate -->
 	<Frame name="SUI_StatusBars_TooltipTemplate" frameStrata="TOOLTIP" virtual="true">
 		<Size><AbsDimension x="374" y="70"/></Size>
 		<Layers>
@@ -85,6 +90,8 @@
 			</Layer>
 		</Layers>
 	</Frame>
+	
+	<!-- SUI_StatusBars_XPTemplate -->
 	<Frame name="SUI_StatusBars_XPTemplate" frameStrata="BACKGROUND" enableMouse="true" virtual="true">
 		<Size><AbsDimension x="450" y="32" /></Size>
 		<Layers>
@@ -127,6 +134,8 @@
 			</Layer>
 		</Layers>
 	</Frame>
+	
+	<!-- SUI_StatusBars_RepTemplate -->
 	<Frame name="SUI_StatusBars_RepTemplate" frameStrata="BACKGROUND" enableMouse="true" virtual="true">
 		<Size><AbsDimension x="450" y="32" /></Size>
 		<Layers>
@@ -167,6 +176,8 @@
 			</Layer>
 		</Layers>
 	</Frame>
+	
+	<!-- SUI_PopTemplate -->
 	<Frame name="SUI_PopTemplate" frameStrata="BACKGROUND" virtual="true">
 		<Size><AbsDimension x="400" y="32" /></Size>
 		<Layers>
@@ -177,7 +188,9 @@
 				</Texture>
 			</Layer>
 		</Layers>
-	</Frame>	
+	</Frame>
+	
+	<!-- SUI_BarTemplate1 -->
 	<Frame name="SUI_BarTemplate1" frameStrata="BACKGROUND" virtual="true">
 		<Size><AbsDimension x="400" y="32" /></Size>
 		<Layers>
@@ -189,6 +202,8 @@
 			</Layer>
 		</Layers>
 	</Frame>
+	
+	<!-- SUI_BarTemplate3 -->
 	<Frame name="SUI_BarTemplate3" frameStrata="BACKGROUND" virtual="true">
 		<Size><AbsDimension x="135" y="100" /></Size>
 		<Layers>
@@ -200,6 +215,8 @@
 			</Layer>
 		</Layers>
 	</Frame>
+	
+	<!-- SUI_ActionBarsTemplate -->
 	<Frame name="SUI_ActionBarsTemplate" parent="SpartanUI" frameStrata="BACKGROUND" virtual="true">
 		<Size><AbsDimension x="1002" y="139"/></Size>
 		<Frames>
@@ -208,11 +225,13 @@
 			<Frame name="SUI_Bar3" inherits="SUI_BarTemplate1"><Anchors><Anchor point="BOTTOMLEFT" relativePoint="BOTTOM"><Offset><AbsDimension x="100" y="70" /></Offset></Anchor></Anchors></Frame>
 			<Frame name="SUI_Bar4" inherits="SUI_BarTemplate1"><Anchors><Anchor point="BOTTOMLEFT" relativePoint="BOTTOM"><Offset><AbsDimension x="100" y="31" /></Offset></Anchor></Anchors></Frame>
 			<Frame name="SUI_Bar5" inherits="SUI_BarTemplate3"><Anchors><Anchor point="BOTTOMRIGHT" relativePoint="BOTTOM"><Offset><AbsDimension x="-502" y="5" /></Offset></Anchor></Anchors></Frame>
-			<Frame name="SUI_Bar6" inherits="SUI_BarTemplate3"><Anchors><Anchor point="BOTTOMLEFT" relativePoint="BOTTOM"><Offset><AbsDimension x="502" y="5" /></Offset></Anchor></Anchors></Frame>			
+			<Frame name="SUI_Bar6" inherits="SUI_BarTemplate3"><Anchors><Anchor point="BOTTOMLEFT" relativePoint="BOTTOM"><Offset><AbsDimension x="502" y="5" /></Offset></Anchor></Anchors></Frame>
 			<Frame name="SUI_Popup1" inherits="SUI_PopTemplate"><Anchors><Anchor point="BOTTOMRIGHT" relativePoint="BOTTOM"><Offset><AbsDimension x="-100" y="105" /></Offset></Anchor></Anchors></Frame>
 			<Frame name="SUI_Popup2" inherits="SUI_PopTemplate"><Anchors><Anchor point="BOTTOMLEFT" relativePoint="BOTTOM"><Offset><AbsDimension x="100" y="105" /></Offset></Anchor></Anchors></Frame>
 		</Frames>
 	</Frame>
+	
+	<!-- SUI_Popup1MaskTemplate -->
 	<Frame name="SUI_Popup1MaskTemplate" parent="SpartanUI" frameStrata="MEDIUM" virtual="true">
 		<Size><AbsDimension x="400" y="34"/></Size>
 		<Layers>
@@ -224,6 +243,8 @@
 			</Layer>
 		</Layers>
 	</Frame>
+	
+	<!-- SUI_Popup2MaskTemplate -->
 	<Frame name="SUI_Popup2MaskTemplate" parent="SpartanUI" frameStrata="MEDIUM" virtual="true">
 		<Size><AbsDimension x="400" y="34"/></Size>
 		<Layers>
@@ -241,7 +262,5 @@
 	<Script file="Module-StatusBars.lua" />
 	<Script file="Module-Minimap.lua" />
 	<Script file="Module-ActionBars.lua" />
-	<Script file="Bags.lua" />
-	<Script file="Merchant.lua" />
-	<Script file="ToolTips.lua" />
+	<Script file="Module-BuffFrame.lua" />
 </Ui>

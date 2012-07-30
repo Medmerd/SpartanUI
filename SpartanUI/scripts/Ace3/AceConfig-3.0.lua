@@ -3,7 +3,7 @@
 -- as well as associate it with a slash command.
 -- @class file
 -- @name AceConfig-3.0
--- @release $Id: AceConfig-3.0.lua 802 2009-04-11 12:12:37Z nevcairiel $
+-- @release $Id: AceConfig-3.0.lua 963 2010-07-26 11:35:35Z mikk $
 
 --[[
 AceConfig-3.0
@@ -17,12 +17,13 @@ local AceConfig = LibStub:NewLibrary(MAJOR, MINOR)
 
 if not AceConfig then return end
 
-
 local cfgreg = LibStub("AceConfigRegistry-3.0")
 local cfgcmd = LibStub("AceConfigCmd-3.0")
--- local cfgdlg = LibStub("AceConfigDialog-3.0")
---TODO: local cfgdrp = LibStub("AceConfigDropdown-3.0")
+--TODO: local cfgdlg = LibStub("AceConfigDialog-3.0", true)
+--TODO: local cfgdrp = LibStub("AceConfigDropdown-3.0", true)
 
+-- Lua APIs
+local pcall, error, type, pairs = pcall, error, type, pairs
 
 -- -------------------------------------------------------------------
 -- :RegisterOptionsTable(appName, options, slashcmd, persist)

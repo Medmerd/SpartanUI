@@ -1,11 +1,11 @@
-## Interface: 40300
-## Title: SpartanUI (2.6.3-Beta)
+## Interface: 40200
+## Title: SpartanUI |CFF0070DDCore|r
 ## Notes: User Interface combining elegant artwork with well designed features.
-## Version: 2.6.3.40300 Beta
-## Author: Vaebris (Orginal Authors and maintainers: Atriace, Beladona, Zilver, Baine)
+## Version: 4.2.0.0
+## Author: Atriace, Beladona, Strife
 ## X-Category: User Interfaces
-## X-Email: info@spartanui.net
-## X-Website: http://www.spartanui.net
+## X-Email: code@spartanui.com
+## X-Website: http://www.spartanui.com
 ## OptionalDeps: LibStub, Ace3, Bartender4, FuBar, Titan
 ## SavedVariablesPerCharacter: suiChar
 

@@ -24,12 +24,23 @@ function addon:OnInitialize()
 			if (InCombatLockdown()) then 
 				addon:Print(ERR_NOT_IN_COMBAT);
 			else
-				suiChar = nil;
+--				suiChar = nil;
+				suiChar ={};
+				suiChar.AlphaNotise = true
 				ReloadUI();
 			end
 		end
 	};
+	addon.options.args["version"] = {
+		type = "execute",
+		name = "Show SpartanUI version",
+		desc = "Show SpartanUI version",
+		func = function()
+			addon:Print("SpartanUI "..GetAddOnMetadata("SpartanUI", "Version"));
+		end
+	};
 end
+
 function addon:OnEnable()
 	LibStub("AceConfig-3.0"):RegisterOptionsTable("SpartanUI", addon.options, {"sui", "spartanui"});
 end

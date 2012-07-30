@@ -5,15 +5,16 @@ suiChar.tipHover = suiChar.tipHover or 0;
 
 local tooltip, xpframe, repframe;
 local FACTION_BAR_COLORS = {
-	[1] = {r = 1, g = 0.2, b = 0},
-	[2] = {r = 0.8, g = 0.3, b = 0},
-	[3] = {r = 0.8, g = 0.2, b = 0},
-	[4] = {r = 1, g = 0.8, b = 0},
-	[5] = {r = 0, g = 1, b = 0.1},
-	[6] = {r = 0, g = 1, b = 0.2},
-	[7] = {r = 0, g = 1, b = 0.3},
-	[8] = {r = 0, g = 0.6, b = 0.1},
+	[1] = {r = 1,	g = 0.2,	b = 0},
+	[2] = {r = 0.8,	g = 0.3,	b = 0},
+	[3] = {r = 0.8,	g = 0.2,	b = 0},
+	[4] = {r = 1,	g = 0.8,	b = 0},
+	[5] = {r = 0,	g = 1,		b = 0.1},
+	[6] = {r = 0,	g = 1,		b = 0.2},
+	[7] = {r = 0,	g = 1,		b = 0.3},
+	[8] = {r = 0,	g = 0.6,	b = 0.1},
 };
+
 local GetFactionDetails = function(name)
 	if (not name) then return; end
 	local description = " ";
@@ -41,7 +42,9 @@ function module:OnInitialize()
 	end
 	};
 end
+
 function module:OnEnable()
+	suiChar.tipHover = suiChar.tipHover or 0;
 	do -- create the tooltip
 		tooltip = CreateFrame("Frame","SUI_StatusBarTooltip",SpartanUI,"SUI_StatusBars_TooltipTemplate");
 		tooltip:SetScript("OnHide",function()
@@ -58,13 +61,13 @@ function module:OnEnable()
 		xptip2 = string.gsub(xptip2,"\n"," "); -- In this condition, you can get %d more monster experience before the next rest state. (replaced single breaks with space)
 		local XP_LEVEL_TEMPLATE = "(%d / %d) %d%% "..COMBAT_XP_GAIN; -- use Global Strings and regex to make the level string work in any locale
 		local xprest = TUTORIAL_TITLE26.." (%d%%) -"; -- Rested (%d%%) -
-	
+		
 		xpframe = CreateFrame("Frame","SUI_ExperienceBar",SpartanUI,"SUI_StatusBars_XPTemplate");
 		xpframe:SetPoint("BOTTOMRIGHT","SpartanUI","BOTTOM",-80,0);
-	
+		
 		SUI_ExperienceBarFill:SetVertexColor(0,0.6,1,0.7);
 		SUI_ExperienceBarFillGlow:SetVertexColor(0,0.6,1,0.5);
-		SUI_ExperienceBarLead:SetVertexColor(0,0.6,1,0.7);	
+		SUI_ExperienceBarLead:SetVertexColor(0,0.6,1,0.7);
 		SUI_ExperienceBarLeadGlow:SetVertexColor(0,0.6,1,0.5);
 		
 		local showTooltip = function()
@@ -97,7 +100,19 @@ function module:OnEnable()
 				SUI_ExperienceBarFill:SetWidth(0.1);
 			else
 				SUI_ExperienceBarFill:SetWidth((now/goal)*400);
-			end	
+			end
+			-- Making some stuff ready for changing color on exp if rested.
+--			if rested ~= 0 then
+--				SUI_ExperienceBarFill:SetVertexColor(0,1,0.1,0.7);
+--				SUI_ExperienceBarFillGlow:SetVertexColor(0,1,0.1,0.5);
+--				SUI_ExperienceBarLead:SetVertexColor(0,1,0.1,0.7);
+--				SUI_ExperienceBarLeadGlow:SetVertexColor(0,1,0.1,0.5);
+--			else
+--				SUI_ExperienceBarFill:SetVertexColor(0,0.6,1,0.7);
+--				SUI_ExperienceBarFillGlow:SetVertexColor(0,0.6,1,0.5);
+--				SUI_ExperienceBarLead:SetVertexColor(0,0.6,1,0.7);
+--				SUI_ExperienceBarLeadGlow:SetVertexColor(0,0.6,1,0.5);
+--			end
 		end);
 		xpframe:RegisterEvent("PLAYER_ENTERING_WORLD");
 		xpframe:RegisterEvent("PLAYER_XP_UPDATE");
@@ -106,10 +121,10 @@ function module:OnEnable()
 		xpframe:SetFrameStrata("BACKGROUND");
 		xpframe:SetFrameLevel(2);
 	end
-	do -- reputation bar	
+	do -- reputation bar
 		repframe = CreateFrame("Frame","SUI_ReputationBar",SpartanUI,"SUI_StatusBars_RepTemplate");
 		repframe:SetPoint("BOTTOMLEFT",SpartanUI,"BOTTOM",78,0);
-	
+		
 		SUI_ReputationBarFill:SetVertexColor(0,1,0,0.7);
 		SUI_ReputationBarFillGlow:SetVertexColor(0,1,0,0.2);
 		SUI_ReputationBarLead:SetVertexColor(0,1,0,0.7);
@@ -140,7 +155,7 @@ function module:OnEnable()
 		repframe:SetScript("OnMouseDown",function()
 			if (tooltip:IsVisible()) then tooltip:Hide();
 			elseif (suiChar and suiChar.tipHover == 0) then showTooltip(); end
-		end);		
+		end);
 		repframe:SetScript("OnEvent",function()
 			local ratio,name,reaction,low,high,current = 0,GetWatchedFactionInfo();
 			if name then ratio = (current-low)/(high-low); end
@@ -159,7 +174,7 @@ function module:OnEnable()
 		repframe:RegisterEvent("UPDATE_FACTION");
 		repframe:RegisterEvent("PLAYER_LEVEL_UP");
 		repframe:RegisterEvent("CVAR_UPDATE");
-	
+		
 		repframe:SetFrameStrata("BACKGROUND");
 		repframe:SetFrameLevel(2);
 	end
