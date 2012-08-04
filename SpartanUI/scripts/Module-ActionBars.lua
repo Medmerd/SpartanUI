@@ -534,8 +534,11 @@ function module:OnEnable()
 		end
 	end
 	SetupProfile();
+	
+	-- Scale main bag icon
+	MainMenuBarBackpackButton:SetScale(1.25);
 	-- Do what Bartender isn't - Make the Bag buttons the same size
-	do -- modify CharacterBag(0-3) Scale
+	do -- modify CharacterBag(0-3) Scale		
 		for i = 1,4 do
 			_G["CharacterBag"..(i-1).."Slot"]:SetScale(1.25);
 		end
