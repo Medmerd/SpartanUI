@@ -27,14 +27,14 @@ SetCVar("cameraYawMoveSpeed","230");
 local frame = CreateFrame("Frame");
 frame:RegisterEvent("CHAT_MSG_SYSTEM");
 frame:RegisterEvent("PLAYER_ENTERING_WORLD");
-frame:SetScript("OnEvent",function(self, event, arg1)
+frame:SetScript("OnEvent",function(self, event, ...)
 	if event == "CHAT_MSG_SYSTEM" then
-		if (arg1 == format(MARKED_AFK_MESSAGE,DEFAULT_AFK_MESSAGE)) and (not SpinCamData.Disable) then
+		if (... == format(MARKED_AFK_MESSAGE,DEFAULT_AFK_MESSAGE)) and (not SpinCamData.Disable) then
 			SetCVar("cameraYawMoveSpeed","8");
 			MoveViewRightStart();
 			SpinCamRunning = true;
 			SetView(5);
-		elseif (arg1 == CLEARED_AFK) and (SpinCamRunning) then
+		elseif (... == CLEARED_AFK) and (SpinCamRunning) then
 			MoveViewRightStop();
 			SetCVar("cameraYawMoveSpeed","230");
 			SpinCamRunning = nil;

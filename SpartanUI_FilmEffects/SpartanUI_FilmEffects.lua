@@ -12,7 +12,7 @@ FEDB.Interval = 12.5;
 FEDB.animationInterval = 0;
 FEDB.record = 1;
 ---------------------------------------------------------------------------
-function FG_OnEvent(arg1, arg2)
+function FG_OnEvent(self, event, arg1, arg2)
 	if not FE_Vignette and arg1=="vignette" then
 		local t = f:CreateTexture("FE_Vignette", "OVERLAY")
 		t:SetAllPoints(UIParent)
@@ -39,7 +39,7 @@ function FG_OnEvent(arg1, arg2)
 			t2:SetBlendMode("MOD")
 			t:SetAlpha(.2)
 			t2:SetAlpha(.05)
-		
+			
 			local resolution =({GetScreenResolutions()})[GetCurrentResolution()];
 			local x, y = strmatch(resolution, "(%d+)x(%d+)")
 			
@@ -96,9 +96,7 @@ function FG_OnEvent(arg1, arg2)
 				t2:SetBlendMode("MOD")
 				t:SetAlpha(intensity * .45)
 				t2:SetAlpha(intensity * .3)
-			
-						
-
+				
 				local father, anchor
 				father = _G["FG_"..(ix-1).."_"..iy.."_Add"] or _G["FG_"..ix.."_"..(iy-1).."_Add"] or f
 				
@@ -139,13 +137,14 @@ function FG_OnEvent(arg1, arg2)
 		if FG_Crispy then FG_Crispy:Hide(); end
 		
 		FEDB.vignette = nil;
-		FEDB.animateGrainFuzzy = nil;		
-		FEDB.animateGrainCrispy = nil;		
-	end		
+		FEDB.animateGrainFuzzy = nil;
+		FEDB.animateGrainCrispy = nil;
+	end
 end
+
 function FG_OnUpdate(self, elapsed)
 	FEDB.animationInterval = FEDB.animationInterval + elapsed
-	if (FEDB.animationInterval > (0.02)) then		-- 50 FPS
+	if (FEDB.animationInterval > (0.02)) then -- 50 FPS
 		FEDB.animationInterval = 0
 		
 		local yOfs = math.random(0, 256)
@@ -156,46 +155,47 @@ function FG_OnUpdate(self, elapsed)
 		end
 	end
 end
-function FG_OnLoad(event)
+
+function FG_OnLoad(self, event, ...)
 	if not FEDB then return; end
 	if FEDB.animateGrainCrispy then
-		FG_OnEvent("film", "crisp");
+		FG_OnEvent(self, event, "film", "crisp");
 	end
 	if FEDB.animateGrainFuzzy then
-		FG_OnEvent("film", "blur");
+		FG_OnEvent(self, event, "film", "blur");
 	end
 	if FEDB.vignette then
-		FG_OnEvent("vignette");
+		FG_OnEvent(self, event, "vignette");
 	end
-end	
+end
 ---------------------------------------------------------------------------
 SlashCmdList["FILMEFF"] = function(msg)
 	local msg = string.lower(msg)
 	local cmd = strsplit(" ",msg);
 	if (cmd == "vignette") then
-		FG_OnEvent("vignette");
+		FG_OnEvent(self, event, "vignette");
 		if FEDB.vignette then 
 			DEFAULT_CHAT_FRAME:AddMessage("|cff33ff99FilmEffects|r: Vignette Enabled");
 		else
 			DEFAULT_CHAT_FRAME:AddMessage("|cff33ff99FilmEffects|r: Vignette Disabled");
 		end
 	elseif (cmd == "blur") then
-		FG_OnEvent("film", "blur");
+		FG_OnEvent(self, event, "film", "blur");
 		if FEDB.animateGrainFuzzy then 
 			DEFAULT_CHAT_FRAME:AddMessage("|cff33ff99FilmEffects|r: Blurry Film-Grain Enabled");
 		else
 			DEFAULT_CHAT_FRAME:AddMessage("|cff33ff99FilmEffects|r: Blurry Film-Grain Disabled");
 		end
 	elseif (cmd == "crisp") then
-		FG_OnEvent("film", "crisp");
+		FG_OnEvent(self, event, "film", "crisp");
 		if FEDB.animateGrainCrispy then 
 			DEFAULT_CHAT_FRAME:AddMessage("|cff33ff99FilmEffects|r: Crisp Film-Grain Enabled");
 		else
 			DEFAULT_CHAT_FRAME:AddMessage("|cff33ff99FilmEffects|r: Crisp Film-Grain Disabled");
 		end
 	elseif (cmd == "reset") then
-		FG_OnEvent("reset");
-		DEFAULT_CHAT_FRAME:AddMessage("|cff33ff99FilmEffects|r: Everything Disabled");	
+		FG_OnEvent(self, event, "reset");
+		DEFAULT_CHAT_FRAME:AddMessage("|cff33ff99FilmEffects|r: Everything Disabled");
 	else
 		DEFAULT_CHAT_FRAME:AddMessage("|cff33ff99FilmEffects|r: Arguments to |cffffff78/film|r");
 		if FEDB.vignette then
@@ -213,7 +213,7 @@ SlashCmdList["FILMEFF"] = function(msg)
 		else
 			DEFAULT_CHAT_FRAME:AddMessage("    |cffffff78crisp|r - toggles a sharp film-grain to the screen");
 		end
-		DEFAULT_CHAT_FRAME:AddMessage("    |cffffff78reset|r - disables all active film effects");		
+		DEFAULT_CHAT_FRAME:AddMessage("    |cffffff78reset|r - disables all active film effects");
 	end
 end;
 SLASH_FILMEFF1 = "/film";
