@@ -13,13 +13,8 @@ do -- relocate the warlock ShardBar
 			ShardBarFrame:SetPoint("TOPLEFT",addon.player,"BOTTOMLEFT",2,-2);
 		end
 	end);
-	ShardBarFrame:SetParent(addon.player);
-	-- 2012.07.29 - something wrong with Warlock frame?
-	-- ShardBar_OnLoad(ShardBarFrame);
-	
-	ShardBarFrame:SetFrameStrata("MEDIUM");
-	ShardBarFrame:SetFrameLevel(4);
-	ShardBarFrame:SetScale(1); ShardBarFrame:ClearAllPoints();
+	ShardBarFrame:SetParent(addon.player); ShardBar_OnLoad(ShardBarFrame); ShardBarFrame:SetFrameStrata("MEDIUM");
+	ShardBarFrame:SetFrameLevel(4); ShardBarFrame:SetScale(1); ShardBarFrame:ClearAllPoints();
 	ShardBarFrame:SetPoint("TOPLEFT",addon.player,"TOPLEFT",2,-2);
 end
 
@@ -52,7 +47,6 @@ do -- relocate the paladin PaladinPowerBar
 		if (parent ~= addon.player) then
 			PaladinPowerBar:ClearAllPoints();
 			PaladinPowerBar:SetPoint("TOPLEFT",addon.player,"BOTTOMLEFT",60,14);
-			-- 60, 14
 		end
 	end);
 	PaladinPowerBar:SetParent(addon.player); PaladinPowerBar_OnLoad(PaladinPowerBar); PaladinPowerBar:SetFrameStrata("MEDIUM");

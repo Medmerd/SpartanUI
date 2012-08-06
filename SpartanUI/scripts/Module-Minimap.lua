@@ -97,7 +97,7 @@ local modifyMinimapLayout = function()
 	GameTimeFrame:ClearAllPoints(); GameTimeFrame:SetPoint("TOPRIGHT",Minimap,"TOPRIGHT",20,-16)
 	MiniMapTracking:ClearAllPoints(); MiniMapTracking:SetPoint("TOPLEFT",MinimapBackdrop,"TOPLEFT",13,-40)
 	MiniMapTrackingButton:ClearAllPoints(); MiniMapTrackingButton:SetPoint("TOPLEFT",MiniMapTracking,"TOPLEFT",0,0)
-	-- MiniMapBattlefieldFrame:ClearAllPoints(); MiniMapBattlefieldFrame:SetPoint("BOTTOMLEFT",Minimap,"BOTTOMLEFT",13,-13)
+	MiniMapBattlefieldFrame:ClearAllPoints(); MiniMapBattlefieldFrame:SetPoint("BOTTOMLEFT",Minimap,"BOTTOMLEFT",13,-13)
 	
 	Minimap.overlay = Minimap:CreateTexture(nil,"OVERLAY");
 	Minimap.overlay:SetWidth(250); Minimap.overlay:SetHeight(250); 
@@ -208,8 +208,13 @@ function module:OnEnable()
 	modifyMinimapLayout();
 	createMinimapCoords();
 	CheckDefaults();
+	
+	LFGSearchStatus:ClearAllPoints();
+	LFGSearchStatus:SetPoint("BOTTOM",SpartanUI,"TOP",0,100);
+	
 	-- LFDSearchStatus:ClearAllPoints();
-	-- LFDSearchStatus:SetPoint("BOTTOM",SpartanUI,"TOP",0,100);
+    -- LFDSearchStatus:SetPoint("BOTTOM",SpartanUI,"TOP",0,100);
+	
 	module.handleBuff = true
 	-- MinimapWorldMapButton
 

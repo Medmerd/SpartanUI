@@ -299,19 +299,28 @@ local CreatePlayerFrame = function(self,unit)
 		self:Tag(self.StatusText, '[afkdnd]');
 	end
 	do -- setup buffs and debuffs
+		
+	
 		self.Auras = CreateFrame("Frame",nil,self);
+		
+		
 		self.Auras:SetWidth(22*10); self.Auras:SetHeight(22*2);
 		self.Auras:SetPoint("BOTTOMLEFT",self,"TOPLEFT",10,0);
 		self.Auras:SetFrameStrata("LOW");
 		self.Auras:SetFrameLevel(4);
 		-- settings
-		self.Auras.size = 20; self.Auras.spacing = 1;
+		self.Auras.size = 20;
+		self.Auras.spacing = 1;
 		self.Auras.initialAnchor = "BOTTOMLEFT";
 		self.Auras["growth-x"] = "RIGHT";
 		self.Auras["growth-y"] = "UP";
 		self.Auras.gap = true;
 		self.Auras.numBuffs = 10;
 		self.Auras.numDebuffs = 10;
+		
+		
+		self.Auras.onlyShowPlayer = suiChar.PlayerFrames.Buffs.onlyShowPlayer;
+		
 		
 		self.Auras.PostUpdate = PostUpdateAura;
 	end

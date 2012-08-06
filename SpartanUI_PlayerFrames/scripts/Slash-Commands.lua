@@ -12,6 +12,12 @@ for k,v in pairs(castbardefault) do if not suiChar.PlayerFrames.Castbar[k] then 
 setmetatable(suiChar.PlayerFrames.Castbar,{__index = castbardefault});
 -- /spartanui castbar player
 
+-- init or reload the buffs var?
+suiChar.PlayerFrames.Buffs = suiChar.PlayerFrames.Buffs or {};
+local oBuffBarDefault = { Player = {onlyShowPlayer = 0, buffSize = 20}  };
+for k, v in pairs (oBuffBarDefault) do if not suiChar.PlayerFrames.Buffs[k] then suiChar.PlayerFrames.Buffs[k] = v end end
+setmetatable(suiChar.PlayerFrames.Buffs,{__index = oBuffBarDefault});
+
 function addon:OnInitialize()
 	spartan.options.args["auras"] = {
 		name = "Unitframe Auras",
@@ -216,6 +222,60 @@ function addon:OnInitialize()
 			},
 		}
 	};
+	spartan.options.args["buffs"] = {
+		name = "Frame Buffs",
+		desc = "Frame buff settings",
+		type = "group", args = {
+			player = {
+				name="Player Frame Buffs", desc = "Player Frame Buffs", type = "group",
+				args = {
+					onlyShowPlayer = {name = "Only show player buffs", type = "toggle",
+						get = function(info) return suiChar.PlayerFrames.Buffs.Player.onlyShowPlayer; end,
+						set = function(info,val)
+							if suiChar.PlayerFrames.Buffs.onlyShowPlayer == 0 then
+								suiChar.PlayerFrames.Buffs.onlyShowPlayer = 1;
+								spartan:Print("Player - Only showing Player Buffs");
+							else
+								suiChar.PlayerFrames.Buffs.onlyShowPlayer = 0;
+								spartan:Print("Player - Showing all Buffs");
+							end
+						end
+					},
+					buffSize = {name = "Set buff Size", type = "range",
+						get = function(info) return suiChar.PlayerFrames.Buffs.Player.buffSize; end,
+						set = function(info,val)
+							if (InCombatLockdown()) then 
+								addon:Print(ERR_NOT_IN_COMBAT);
+							else
+								suiChar.PlayerFrames.Buffs.Player.buffSize = min(10,round(val));
+								-- updateMinimumScale();
+								spartan:Print("Player - Buff size set");
+							end
+							addon.focus.Auras:PostUpdate("focus");
+						
+							-- if suiChar.PlayerFrames.Buffs.buffSize == nil then
+							--	suiChar.PlayerFrames.Buffs.buffSize = 20;
+							--	spartan:Print("Player - Size set to default(20)");
+							-- end
+							
+							-- suiChar.PlayerFrames.Buffs.buffSize = val;
+							-- spartan:Print("Player - Size set to "..val);
+								
+						end
+					},
+					
+					
+				}
+				
+				
+			},
+		
+				
+			
+			
+		}
+	};
+	
 end
 
 function addon:OnEnable()

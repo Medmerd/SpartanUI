@@ -164,9 +164,8 @@ do -- hide party frame in raid, if option enabled
 --		print(...)
 		if (event == 'PLAYER_ENTERING_WORLD') then if not suiChar.AlphaNotise then StaticPopup_Show ("Notise") end end
 
-		local inRaid = IsInRaid()  -- ( numGroupMembers () > 0 )
-		local inParty = IsInGroup()  -- ( numGroupMembers () > 0 )
-		local bDebug_ShowFrame = true;
+		local inRaid = ( GetNumRaidMembers() > 0 )
+		local inParty = ( GetNumPartyMembers() > 0 )
 
 		local HideInRaid = suiChar.PartyFrames.HidePartyInRaid;
 		if HideInRaid == 1 then party:SetAttribute('showRaid',false) end
@@ -187,9 +186,6 @@ do -- hide party frame in raid, if option enabled
 --		print('HidePlayer '..HidePlayer..', showPlayer '..tostring(showPlayer))
 --		print('HideSolo '..HideSolo..', showSolo '..tostring(showSolo))
 
-	-- if bDebug_ShowFrame then
-	-- 	party:Show();
-	--else
 		if showParty then
 			if inRaid then if showRaid then party:Show() else party:Hide() end
 			elseif inParty then party:Show()
@@ -197,10 +193,8 @@ do -- hide party frame in raid, if option enabled
 			else if party:IsShown() then party:Hide() end
 			end
 		else
-			party:Hide();
+			party:Hide()
 		end
-	--end
-		
 		if ( addon.offset ~= addon:updatePartyOffset() ) then addon:UpdatePartyPosition() end
 	end
 	

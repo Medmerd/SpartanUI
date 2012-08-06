@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/67/trunk/SpartanUI/SpartanUI/scripts
+END
+Module-BuffFrame.lua
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/67/trunk/SpartanUI/SpartanUI/scripts/Module-BuffFrame.lua
+END
+Embed-Libraries.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/16/trunk/SpartanUI/SpartanUI/scripts/Embed-Libraries.xml
+END
+Module-ActionBars.lua
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/65/trunk/SpartanUI/SpartanUI/scripts/Module-ActionBars.lua
+END
+Global-Framework.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/16/trunk/SpartanUI/SpartanUI/scripts/Global-Framework.xml
+END
+Global-Framework.lua
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/67/trunk/SpartanUI/SpartanUI/scripts/Global-Framework.lua
+END
+Global-Features.lua
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/45/trunk/SpartanUI/SpartanUI/scripts/Global-Features.lua
+END
+Module-Minimap.lua
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/59/trunk/SpartanUI/SpartanUI/scripts/Module-Minimap.lua
+END
+Module-ChatFrame.lua
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/59/trunk/SpartanUI/SpartanUI/scripts/Module-ChatFrame.lua
+END
+Module-StatusBars.lua
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/59/trunk/SpartanUI/SpartanUI/scripts/Module-StatusBars.lua
+END
